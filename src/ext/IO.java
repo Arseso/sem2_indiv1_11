@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class IO {
 
 
-    protected static ArrayList<People> inputFromFile(String filename) {
+    public static ArrayList<People> inputFromFile(String filename) {
         ArrayList<String> strings = new ArrayList<>();
 
         try {
@@ -30,8 +30,8 @@ public class IO {
         return strToPeople(strings);
     }
 
-    protected static void printHi(ArrayList<People> peoples) {
-        System.out.println("Приветствия: ");
+    public static void printHi(ArrayList<People> peoples) {
+        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ");
         ArrayList<People> black = new ArrayList<>();
         for(People p1 : peoples){
             for(People p2 : peoples) if(p1!=p2 && !black.contains(p2)) p1.hi(p2);
@@ -41,29 +41,28 @@ public class IO {
         }
     }
 
-    protected static void printSortedByName(ArrayList<People> peoples) {
-        System.out.println("Отсортировано по имени: ");
+    public static void printSortedByName(ArrayList<People> peoples) {
+        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: ");
         Comparator<People> comparator = Comparator.comparing(People::getName);
         peoples.sort(comparator);
         printAbout(peoples);
     }
 
-    protected static void printSortedByAge(ArrayList<People> peoples) {
-        System.out.println("Отсортировано по возрасту: ");
+    public static void printSortedByAge(ArrayList<People> peoples) {
+        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ");
         Comparator<People> comparator = Comparator.comparing(People::getAge);
         peoples.sort(comparator);
         printAbout(peoples);
     }
 
-    protected static void printSortedByNameAndType(ArrayList<People> peoples) {
-//        работает не так как надо
-        System.out.println("Отсортировано по имени и типу: ");
-        Comparator<People> comparator = Comparator.comparing(People::getName);
-        comparator.thenComparing(People::getType);
-        peoples.sort(comparator);
+    public static void printSortedByNameAndType(ArrayList<People> peoples) {
+        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: ");
+        Comparator<People> comparatorType = Comparator.comparing(People::getType);
+        Comparator<People> comparatorName = Comparator.comparing(People::getName);
+        peoples.sort(comparatorName.thenComparing(comparatorType));
         printAbout(peoples);
     }
-    protected static void printAbout(ArrayList<People> p){
+    public static void printAbout(ArrayList<People> p){
         for(People people : p) people.about();
     }
 
@@ -80,9 +79,9 @@ public class IO {
 
     private static int getType(String s) {
         return switch (s) {
-            case "Реалист" -> People.TYPE_REAL;
-            case "Формалист" -> People.TYPE_FORMAL;
-            case "Неформал" -> People.TYPE_INFORMAL;
+            case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" -> People.TYPE_REAL;
+            case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" -> People.TYPE_FORMAL;
+            case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" -> People.TYPE_INFORMAL;
             default -> -1;
         };
     }
