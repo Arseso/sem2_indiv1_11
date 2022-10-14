@@ -42,21 +42,21 @@ public class IO {
     }
 
     public static void printSortedByName(ArrayList<People> peoples) {
-        System.out.println("������������� �� �����: ");
+        System.out.println("Sorted by Name: ");
         Comparator<People> comparator = Comparator.comparing(People::getName);
         peoples.sort(comparator);
         printAbout(peoples);
     }
 
     public static void printSortedByAge(ArrayList<People> peoples) {
-        System.out.println("������������� �� ��������: ");
+        System.out.println("Sorted by age: ");
         Comparator<People> comparator = Comparator.comparing(People::getAge);
         peoples.sort(comparator);
         printAbout(peoples);
     }
 
     public static void printSortedByNameAndType(ArrayList<People> peoples) {
-        System.out.println("������������� �� ����� � ����: ");
+        System.out.println("Sorted by name and type: ");
         Comparator<People> comparatorType = Comparator.comparing(People::getType);
         Comparator<People> comparatorName = Comparator.comparing(People::getName);
         peoples.sort(comparatorName.thenComparing(comparatorType));
@@ -79,9 +79,9 @@ public class IO {
 
     private static int getType(String s) {
         return switch (s) {
-            case "�������" -> People.TYPE_REAL;
-            case "���������" -> People.TYPE_FORMAL;
-            case "��������" -> People.TYPE_INFORMAL;
+            case "Real" -> People.TYPE_REAL;
+            case "Formal" -> People.TYPE_FORMAL;
+            case "Informal" -> People.TYPE_INFORMAL;
             default -> -1;
         };
     }
