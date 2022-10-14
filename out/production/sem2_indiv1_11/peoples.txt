@@ -1,5 +1,6 @@
-Вася:15:Formal
-Вася:15:Real
-Петя:18:Real
-Коля:40:Informal
-Наташа:33:Informal
+5
+Вася   15 Formal
+Вася    15 Reaj
+Петя  j Real
+Коля  40 Informal
+Наташа 33   Informal

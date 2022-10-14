@@ -15,11 +15,11 @@ public class People {
         this.type = type;
     }
 
-    public void about(){
-        System.out.println("Меня зовут "+this.name+",мне "+this.age+" лет, я "+typeToString());
+    public void about() {
+        System.out.println("Меня зовут " + this.name + ",мне " + this.age + " лет, я " + typeToString());
     }
 
-    private String typeToString(){
+    private String typeToString() {
         return switch (this.type) {
             case TYPE_FORMAL -> "Формалист";
             case TYPE_INFORMAL -> "Неформал";
@@ -28,17 +28,17 @@ public class People {
         };
     }
 
-    public void hi(People p){
-        switch(this.type){
+    public void hi(People p) {
+        switch (this.type) {
             case TYPE_FORMAL:
-                System.out.println(this.name+": Здравствуйте, "+ p.getName());
+                System.out.println(this.name + ": Здравствуйте, " + p.getName());
                 break;
             case TYPE_INFORMAL:
-                System.out.println(this.name+": Привет, "+ p.getName());
+                System.out.println(this.name + ": Привет, " + p.getName());
                 break;
             case TYPE_REAL:
-                if(this.age+5<p.getAge()) System.out.println(this.name+": Здравствуйте, "+ p.getName());
-                else System.out.println(this.name+": Привет, "+ p.getName());
+                if (this.age + 5 < p.getAge()) System.out.println(this.name + ": Здравствуйте, " + p.getName());
+                else System.out.println(this.name + ": Привет, " + p.getName());
                 break;
         }
     }

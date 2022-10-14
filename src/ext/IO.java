@@ -16,6 +16,7 @@ public class IO {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));
             String s;
+            s = br.readLine();
             while ((s = br.readLine()) != null) {
                 strings.add(s);
             }
@@ -31,7 +32,7 @@ public class IO {
     }
 
     public static void printHi(ArrayList<People> peoples) {
-        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ");
+        System.out.println("???????????: ");
         ArrayList<People> black = new ArrayList<>();
         for(People p1 : peoples){
             for(People p2 : peoples) if(p1!=p2 && !black.contains(p2)) p1.hi(p2);
@@ -69,10 +70,17 @@ public class IO {
     private static ArrayList<People> strToPeople(ArrayList<String> strings) {
         ArrayList<People> arr = new ArrayList<>();
         for (String s : strings) {
-            String[] sArr = s.split("\\:", 3);
-            if (Integer.parseInt(sArr[1]) != 0 || getType(sArr[2]) != -1)
-                arr.add(new People(sArr[0], Integer.parseInt(sArr[1]), getType(sArr[2])));
-            else return null;
+            String[] sArr = s.split("\\s+", -1);
+
+            int age = 0;
+
+            try{ age = Integer.parseInt(sArr[1]); } catch (NumberFormatException e){ System.out.println(e); };
+            if (sArr.length ==3 && age>0 && getType(sArr[2]) != -1)
+                arr.add(new People(sArr[0], age, getType(sArr[2])));
+            else {
+                System.out.println("Для человека " + sArr[0] + " данные указаны неверно, строка пропущена");
+                continue;
+            };
         }
         return arr;
     }
